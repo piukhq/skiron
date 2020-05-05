@@ -37,3 +37,7 @@ SENTRY_ENV = getenv("TXM_SENTRY_ENV", default="unset").lower()
 
 if SENTRY_DSN is not None:
     sentry_sdk.init(dsn=SENTRY_DSN, environment=SENTRY_ENV, integrations=[FalconIntegration()])
+
+
+# API key for service authentication.
+SERVICE_API_KEY = "F616CE5C88744DD52DB628FAD8B3D"
