@@ -5,21 +5,27 @@ stages:
 
 complexity:
   stage: tests
+  image: binkhq/python:3.8
   before_script:
+    - pip install pipenv
     - pipenv install --dev --system --deploy --ignore-pipfile
   script:
     - xenon --max-average A --max-modules B --max-absolute B .
 
 style:
   stage: tests
+  image: binkhq/python:3.8
   before_script:
+    - pip install pipenv
     - pipenv install --dev --system --deploy --ignore-pipfile
   script:
     - flake8 && black --line-length 120 --check .
 
 type-check:
   stage: tests
+  image: binkhq/python:3.8
   before_script:
+    - pip install pipenv
     - pipenv install --dev --system --deploy --ignore-pipfile
   script:
     - mypy --ignore-missing-imports app
