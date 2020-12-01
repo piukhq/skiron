@@ -1,7 +1,6 @@
 stages:
   - tests
   - build
-  - dev
 
 complexity:
   stage: tests
@@ -38,17 +37,8 @@ build-latest:
   before_script:
     - docker login -u "$CI_REGISTRY_USER" -p "$CI_REGISTRY_PASSWORD" "$CI_REGISTRY"
   script:
-    - docker build --pull -t "$CI_REGISTRY/skiron:latest" .
-    - docker push "$CI_REGISTRY/skiron:latest"
+    - docker build --pull -t "$CI_REGISTRY/skiron:develop-$CI_COMMIT_SHORT_SHA" .
+    - docker run --rm -v /var/run/docker.sock:/var/run/docker.sock "$CI_REGISTRY/aqua-scanner:5.0" scan --local "$CI_REGISTRY/skiron:develop-$CI_COMMIT_SHORT_SHA" --host https://aqua.uksouth.bink.sh:30001/ --user scanner --password $AQUA_PASSWORD --show-negligible --policies Bink --text
+    - docker push "$CI_REGISTRY/skiron:develop-$CI_COMMIT_SHORT_SHA"
   only:
     - develop
-
-tag-develop:
-  stage: dev
-  image: binkops.azurecr.io/tagbot:latest
-  environment: dev
-  script:
-    - tagbot --username "$CI_REGISTRY_USER" --password "$CI_REGISTRY_PASSWORD" --source "$CI_REGISTRY/skiron:latest" --tag "develop-$CI_COMMIT_SHORT_SHA"
-  only:
-    - develop
-
