@@ -24,7 +24,7 @@ def getenv(key: str, default: str = None, conv: t.Callable = str, required: bool
 RABBITMQ_USER = getenv("RABBITMQ_USER", required=False)
 RABBITMQ_PASS = getenv("RABBITMQ_PASS", required=False)
 RABBITMQ_HOST = getenv("RABBITMQ_HOST", required=False)
-RABBITMQ_PORT = getenv("RABBITMQ_PORT", required=False, conv=int)
+RABBITMQ_PORT = getenv("RABBITMQ_PORT", required=False)
 RABBITMQ_DSN = getenv("AMQP_DSN", f"amqp://{RABBITMQ_USER}:{RABBITMQ_PASS}@{RABBITMQ_HOST}:{RABBITMQ_PORT}//")
 
 
