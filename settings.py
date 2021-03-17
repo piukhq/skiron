@@ -21,10 +21,10 @@ def getenv(key: str, default: str = None, conv: t.Callable = str, required: bool
 
 
 # Connection details for RabbitMQ.
-RABBITMQ_USER = getenv("RABBITMQ_USER", required=True)
-RABBITMQ_PASS = getenv("RABBITMQ_PASS", required=True)
-RABBITMQ_HOST = getenv("RABBITMQ_HOST", required=True)
-RABBITMQ_PORT = getenv("RABBITMQ_PORT", required=True, conv=int)
+RABBITMQ_USER = getenv("RABBITMQ_USER")
+RABBITMQ_PASS = getenv("RABBITMQ_PASS")
+RABBITMQ_HOST = getenv("RABBITMQ_HOST")
+RABBITMQ_PORT = getenv("RABBITMQ_PORT", conv=int)
 RABBITMQ_DSN = getenv("AMQP_DSN", f"amqp://{RABBITMQ_USER}:{RABBITMQ_PASS}@{RABBITMQ_HOST}:{RABBITMQ_PORT}//")
 
 
