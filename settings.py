@@ -21,11 +21,11 @@ def getenv(key: str, default: str = None, conv: t.Callable = str, required: bool
 
 
 # Connection details for RabbitMQ.
-RABBITMQ_USER = getenv("RABBITMQ_USER")
-RABBITMQ_PASS = getenv("RABBITMQ_PASS")
-RABBITMQ_HOST = getenv("RABBITMQ_HOST")
-RABBITMQ_PORT = getenv("RABBITMQ_PORT", conv=int)
-RABBITMQ_DSN = getenv("AMQP_DSN", f"amqp://{RABBITMQ_USER}:{RABBITMQ_PASS}@{RABBITMQ_HOST}:{RABBITMQ_PORT}//")
+RABBITMQ_USER = getenv("RABBITMQ_USER", required=False)
+RABBITMQ_PASS = getenv("RABBITMQ_PASS", required=False)
+RABBITMQ_HOST = getenv("RABBITMQ_HOST", required=False)
+RABBITMQ_PORT = getenv("RABBITMQ_PORT", required=False, conv=int)
+RABBITMQ_DSN = getenv("AMQP_DSN", f"amqp://{RABBITMQ_USER}:{RABBITMQ_PASS}@{RABBITMQ_HOST}:{RABBITMQ_PORT}//", required=False)
 
 
 # Sentry project data source name.
