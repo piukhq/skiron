@@ -1,6 +1,6 @@
 import falcon
 
-from app import views, auth
+from app import auth, views
 
 
 def create_app() -> falcon.API:

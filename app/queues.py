@@ -1,5 +1,5 @@
-import typing as t
 import contextlib
+import typing as t
 
 import kombu.simple
 

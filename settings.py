@@ -1,5 +1,5 @@
-import typing as t
 import os
+import typing as t
 
 import sentry_sdk
 from sentry_sdk.integrations.falcon import FalconIntegration

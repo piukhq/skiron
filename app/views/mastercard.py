@@ -3,7 +3,6 @@ from falcon.media.validators import jsonschema
 
 from app import queues
 
-
 _schema = {
     "type": "object",
     "properties": {
