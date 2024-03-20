@@ -6,7 +6,7 @@ verify_ssl = true
 [dev-packages]
 mypy = "*"
 pytest = "*"
-black = "==21.10b0"
+black = "==24.3.0"
 werkzeug = "*"
 flake8 = "*"
 isort = "*"
